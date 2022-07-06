@@ -154,5 +154,6 @@ cython_debug/
 ###################
 .secrets
 log/
+tmp/
 
 output/
