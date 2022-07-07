@@ -11,7 +11,6 @@ from zipfile import ZipFile
 import scripts.consts as consts
 
 
-
 def list_remote_android_bg_v2_files() -> list[any]:
     extracts_url = "https://intelligence.speedtest.net/extracts/bgv2/"
 
@@ -49,9 +48,12 @@ def select_remote_android_bg_v2_files(dates_str: list[str]) -> list[any]:
     files = list_remote_android_bg_v2_files()
     for date_str in dates_str:
         file_name = f"android_bg_v2_{date_str}.zip"
-        file = next((x for x in files if x["name"] == file_name))
-        if file is not None:
-            selected_files.append(file)
+        try:
+            file = next((x for x in files if x["name"] == file_name))
+            if file is not None:
+                selected_files.append(file)
+        except StopIteration as e:
+            continue
     return selected_files
 
 
