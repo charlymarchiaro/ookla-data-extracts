@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 logging.basicConfig(
     filename=consts.log_file_path,
     level=logging.DEBUG,
-    filemode='a',
+    filemode="a",
     format="%(asctime)s - %(message)s",
 )
 
@@ -21,6 +21,9 @@ load_dotenv(consts.env_file_path)
 
 
 def update_android_bg_v2_data():
+    # Remove outdated files from the database
+    db_handler.remove_outdated_files(consts.total_stored_days)
+
     # Get list of all currently stored dates
     stored_dates = db_handler.get_android_bg_v2_stored_dates()
     stored_dates_str = [d.strftime("%Y-%m-%d") for d in stored_dates]

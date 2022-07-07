@@ -39,6 +39,38 @@ def get_android_bg_v2_stored_dates() -> list[datetime]:
     return [r[0] for r in rows]
 
 
+def remove_outdated_files(total_stored_days: int):
+    logging.info("Removing outdated files from the database...")
+
+    file_date_str = (datetime.today() - timedelta(total_stored_days + 1)).strftime(
+        "%Y-%m-%d"
+    )
+
+    conn = None
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # Delete if exists the data for the file date
+        sql = f"""
+                    DELETE FROM
+                            public.android_bg_v2
+                    WHERE
+                            received_date < '{file_date_str} 00:00:00'                            
+                    """
+        cursor.execute(sql)
+        conn.close()
+        logging.info("--> Success")
+
+    except psycopg2.DatabaseError as error:
+        logging.error(error)
+
+    finally:
+        if conn is not None:
+            conn.close()
+
+
 def save_android_bg_v2_file(file_path: str):
     logging.info("Saving data in the database. Source file: " + file_path)
     file_date_str = file_path[-14:-4]
