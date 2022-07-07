@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 logging.basicConfig(
     filename=consts.log_file_path,
     level=logging.DEBUG,
+    filemode='a',
     format="%(asctime)s - %(message)s",
 )
 
