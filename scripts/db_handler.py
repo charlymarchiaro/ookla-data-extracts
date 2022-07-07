@@ -80,7 +80,7 @@ def save_android_bg_v2_file(file_path: str):
                     )
                 )
                 """
-        cursor.execute(sql)
+        cursor.copy_expert(sql, open(norm_file_path, "r"))
         conn.commit()
         conn.close()
         logging.info("--> Success")
