@@ -59,3 +59,4 @@ def update_android_bg_v2_data():
 
 
 update_android_bg_v2_data()
+sys.exit()
