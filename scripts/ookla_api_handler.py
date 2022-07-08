@@ -59,11 +59,15 @@ def select_remote_android_bg_v2_files(dates_str: list[str]) -> list[any]:
 
 def download_and_unzip_file(file: any) -> str:
     logging.info("Downloading " + file["name"] + "...")
-    response = requests.get(file["url"])
-    logging.info("Extracting...")
+    response = requests.get(file["url"], stream=True)
     zip_file_path = consts.tmp_folder + "/" + file["name"]
+    with open(zip_file_path, "wb") as f:
+        for chunk in response.iter_content(chunk_size=128):
+            f.write(chunk)
+
+    logging.info("Extracting...")
     csv_file_name = None
-    with ZipFile(io.BytesIO(response.content)) as zip:
+    with ZipFile(zip_file_path, "r") as zip:
         csv_file_name = zip.namelist()[0]
         zip.extractall(path=consts.tmp_folder)
 
