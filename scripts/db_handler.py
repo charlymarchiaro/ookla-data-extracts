@@ -57,7 +57,7 @@ def remove_outdated_files(total_stored_days: int):
                     DELETE FROM
                             public.android_bg_v2
                     WHERE
-                            received_date < '{file_date_str} 00:00:00'                            
+                            received_date::date < '{file_date_str}'                            
                     """
         cursor.execute(sql)
         conn.close()
@@ -86,8 +86,7 @@ def save_android_bg_v2_file(file_path: str):
                 DELETE FROM
                         public.android_bg_v2
                 WHERE
-                        received_date >= '{file_date_str} 00:00:00'
-                        AND received_date <= '{file_date_str} 23:59:59'
+                        received_date::date = '{file_date_str}'
                 """
         cursor.execute(sql)
 
