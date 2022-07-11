@@ -57,9 +57,10 @@ def remove_outdated_files(total_stored_days: int):
                     DELETE FROM
                             public.android_bg_v2
                     WHERE
-                            received_date::date < '{file_date_str}'                            
+                            received_date::date <= '{file_date_str}'                            
                     """
         cursor.execute(sql)
+        conn.commit()
         conn.close()
         logging.info("--> Success")
 
