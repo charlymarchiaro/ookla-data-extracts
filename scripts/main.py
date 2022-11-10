@@ -57,6 +57,9 @@ def update_android_bg_v2_data():
         except Exception as error:
             logging.error(error)
 
+    # Update table: android_bg_v2__ext_dev
+    db_handler.update_android_bg_v2__ext_dev_table()
+
 
 update_android_bg_v2_data()
 sys.exit()
