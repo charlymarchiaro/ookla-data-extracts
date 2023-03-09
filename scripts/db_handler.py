@@ -72,8 +72,8 @@ def remove_outdated_files(total_stored_days: int):
             conn.close()
 
 
-def save_android_bg_v2_file(file_path: str):
-    logging.info("Saving data in the database. Source file: " + file_path)
+def save_android_bg_v2_file(file_path: str, table: str = 'public.android_bg_v2'):
+    logging.info(f"Saving data in the database. Source file: {file_path}, Table: {table}")
     file_date_str = file_path[-14:-4]
 
     conn = None
@@ -85,7 +85,7 @@ def save_android_bg_v2_file(file_path: str):
         # Delete if exists the data for the file date
         sql = f"""
                 DELETE FROM
-                        public.android_bg_v2
+                        {table}
                 WHERE
                         received_date::date = '{file_date_str}'
                 """
@@ -97,7 +97,7 @@ def save_android_bg_v2_file(file_path: str):
         norm_file_path = os.path.abspath(file_path)
 
         sql = f"""
-                COPY public.android_bg_v2(
+                COPY {table}(
                     {column_names_str}
                 )
                 FROM '{norm_file_path}'
