@@ -172,6 +172,9 @@ CREATE TABLE IF NOT EXISTS public.android_bg_v2
     override_network_type numeric,
     lac numeric,
     psc numeric,
+    location_speed_mps numeric,
+    is_device_5g_capable character varying(7) COLLATE pg_catalog."default",
+    device_language character varying(45) COLLATE pg_catalog."default",
     CONSTRAINT android_bg_v2_id_seq_pkey PRIMARY KEY (id)
 );
 
@@ -356,6 +359,9 @@ CREATE TABLE IF NOT EXISTS public.android_bg_v2__ext_dev
     override_network_type numeric,
     lac numeric,
     psc numeric,
+    location_speed_mps numeric,
+    is_device_5g_capable character varying(7) COLLATE pg_catalog."default",
+    device_language character varying(45) COLLATE pg_catalog."default",
     CONSTRAINT android_bg_v2__ext_dev_id_seq_pkey PRIMARY KEY (id)
 );
 
@@ -542,6 +548,9 @@ CREATE TABLE IF NOT EXISTS public.py__android_bg_v2
     override_network_type numeric,
     lac numeric,
     psc numeric,
+    location_speed_mps numeric,
+    is_device_5g_capable character varying(7) COLLATE pg_catalog."default",
+    device_language character varying(45) COLLATE pg_catalog."default",
     CONSTRAINT py__android_bg_v2_id_seq_pkey PRIMARY KEY (id)
 );
 

@@ -176,4 +176,7 @@ android_bg_v2_column_names: list[str] = [
     "override_network_type",
     "lac",
     "psc",
+    "location_speed_mps",
+    "is_device_5g_capable",
+    "device_language",
 ]

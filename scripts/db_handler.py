@@ -315,7 +315,10 @@ def update_android_bg_v2__ext_dev_table():
                         supported_modem_count,
                         override_network_type,
                         lac,
-                        psc
+                        psc,
+                        location_speed_mps,
+                        is_device_5g_capable,
+                        device_language
                 FROM
                         public.android_bg_v2
                 WHERE
