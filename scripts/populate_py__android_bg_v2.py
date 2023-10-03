@@ -21,9 +21,9 @@ load_dotenv(consts.env_file_path)
 
 
 files = [
-    'C:\\Users\\Usuario\\Desktop\\android_bg_v2_2023-03-05.csv',
-    'C:\\Users\\Usuario\\Desktop\\android_bg_v2_2023-03-06.csv',
-    'C:\\Users\\Usuario\\Desktop\\android_bg_v2_2023-03-07.csv',
+    '/home/u500469/Desktop/android_bg_v2_2023-03-05.csv',
+    '/home/u500469/Desktop/android_bg_v2_2023-03-06.csv',
+    '/home/u500469/Desktop/android_bg_v2_2023-03-07.csv',
 ]
 
 for file in files:
