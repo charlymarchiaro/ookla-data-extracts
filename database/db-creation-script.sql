@@ -183,6 +183,21 @@ CREATE INDEX IF NOT EXISTS android_bg_v2_received_date_idx
     (received_date ASC NULLS LAST)
     TABLESPACE pg_default;
 
+CREATE INDEX IF NOT EXISTS android_bg_v2_region_idx
+    ON public.android_bg_v2 USING btree
+    (region ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+CREATE INDEX IF NOT EXISTS android_bg_v2_earfcn_idx
+    ON public.android_bg_v2 USING btree
+    (earfcn ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+CREATE INDEX IF NOT EXISTS android_bg_v2_network_operator_mnc_code_idx
+    ON public.android_bg_v2 USING btree
+    (network_operator_mnc_code ASC NULLS LAST)
+    TABLESPACE pg_default;
+
 
 CREATE TABLE IF NOT EXISTS public.android_bg_v2__ext_dev
 (
@@ -370,9 +385,25 @@ CREATE INDEX IF NOT EXISTS android_bg_v2__ext_dev_date_idx
     (date ASC NULLS LAST)
     TABLESPACE pg_default;
 
+CREATE INDEX IF NOT EXISTS android_bg_v2__ext_dev_received_date_idx
+    ON public.android_bg_v2__ext_dev USING btree
+    (received_date ASC NULLS LAST)
+    TABLESPACE pg_default;
 
+CREATE INDEX IF NOT EXISTS android_bg_v2__ext_dev_region_idx
+    ON public.android_bg_v2__ext_dev USING btree
+    (region ASC NULLS LAST)
+    TABLESPACE pg_default;
 
+CREATE INDEX IF NOT EXISTS android_bg_v2__ext_dev_earfcn_idx
+    ON public.android_bg_v2__ext_dev USING btree
+    (earfcn ASC NULLS LAST)
+    TABLESPACE pg_default;
 
+CREATE INDEX IF NOT EXISTS android_bg_v2__ext_dev_network_operator_mnc_code_idx
+    ON public.android_bg_v2__ext_dev USING btree
+    (network_operator_mnc_code ASC NULLS LAST)
+    TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS public.py__android_bg_v2
 (
